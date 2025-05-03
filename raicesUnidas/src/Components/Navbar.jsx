@@ -13,14 +13,14 @@ const Navbar = () => {
             <div className='leftSide' id={openLinks ? "open" : "close"}>
                 <img src={Logo} />
                 <div className='hiddenLinks'>
-                    <Link to="/">Home</Link>
+                    <Link to="/">Inicio</Link>
                     <Link to="/">Menu</Link>
                     <Link to="/">Información</Link>
                     <Link to="/">Contacto</Link>
                 </div>
             </div>
             <div className='rightSide'>
-                <Link to="/">Home</Link>
+                <Link to="/">Inicio</Link>
                 <Link to="/">Menu</Link>
                 <Link to="/">Información</Link>
                 <Link to="/">Contacto</Link>
