@@ -58,8 +58,11 @@
 }
 
 .navbar #open .hiddenLinks {
-    display: inherit;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
     margin-left: 30px;
+    ;
 }
 
 .navbar #close .hiddenLinks {
@@ -101,7 +104,7 @@
         display: none;
     }
 
-    .hiddenLinks {
+    .navbar .leftSide .hiddenLinks {
         display: none;
     }
 }
