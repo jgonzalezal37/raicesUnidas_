@@ -22,22 +22,28 @@ const Navbar = () => {
         <div className='navbar'>
             <div className='leftSide' id={openLinks ? "open" : "close"}>
                 <img src={Logo} />
-                <div className='hiddenLinks'>
+                <div className={`hiddenLinks ${openLinks ? 'active' : ''}`}>
+                    <button className="closeButton" onClick={toggleNavBar}>×</button>
                     <Link to="/">Inicio</Link>
-                    <Link to="/Menu">Menu</Link>
-                    <Link to="/Informacion">Información</Link>
-                    <Link to="/Contacto">Contacto</Link>
+                    <Link to="/">Constelaciones Familiares</Link>
+                    <Link to="/">Acerca de mí</Link>
+                    <Link to="/">Consultas</Link>
+                    <Link to="/">Testimonios</Link>
+                    <Link to="/">Contacto</Link>
                 </div>
             </div>
             <div className='rightSide'>
                 <Link to="/">Inicio</Link>
-                <Link to="/Menu">Menu</Link>
-                <Link to="/Informacion">Información</Link>
-                <Link to="/Contacto">Contacto</Link>
+                <Link to="/">Constelaciones Familiares</Link>
+                <Link to="/">Acerca de mí</Link>
+                <Link to="/">Consultas</Link>
+                <Link to="/">Testimonios</Link>
+                <Link to="/">Contacto</Link>
                 <button onClick={toggleNavBar}>
                     <ReorderIcon />
                 </button>
             </div>
+            {openLinks && <div className="overlay" onClick={toggleNavBar}></div>}
         </div>
     )
 }

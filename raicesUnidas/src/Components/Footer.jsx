@@ -10,6 +10,7 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faTiktok} />
                 <FontAwesomeIcon icon={faThreads} />
             </div>
+            <p>@raicesUnidas_</p>
         </div>
     )
 }
