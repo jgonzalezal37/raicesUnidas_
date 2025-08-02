@@ -1,4 +1,5 @@
-.menu {
+/* Contenedor principal */
+.rituales {
     width: 100%;
     height: auto;
     display: flex;
@@ -7,36 +8,48 @@
     flex-direction: column;
 }
 
-.menu .menuTitle {
-    font-family: cursive;
-    font-size: 60px;
+/* Si quieres, puedes usar el id para estilos adicionales */
+#rituales {
+    background-color: #fafafa;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.menuList {
+/* Título principal */
+.rituales .ritualesTitle {
+    font-family: cursive;
+    font-size: 60px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de lista en grid */
+.ritualesList {
     width: 70vw;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     place-items: center;
+    gap: 20px;
 }
 
-/* MENU ITEM STYLING */
-
-.menuItem {
+/* Item individual */
+.ritualItem {
     border-radius: 15px;
     width: 300px;
     height: 350px;
-    margin: 20px;
+    margin: 20px 0;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in;
 }
 
-.menuItem:hover {
+.ritualItem:hover {
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
-    transition: 0.3s ease-in;
     cursor: pointer;
 }
 
-.menuItem div {
+.ritualItem div {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 100%;
@@ -46,19 +59,21 @@
     background-size: cover;
 }
 
-.menuItem h1,
-.menuItem p {
+.ritualItem h1,
+.ritualItem p {
     margin-left: 20px;
+    color: #333;
 }
 
+/* Responsive design */
 @media only screen and (max-width: 1300px) {
-    .menuList {
-        grid-template-columns: 1fr 1fr;
+    .ritualesList {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media only screen and (max-width: 800px) {
-    .menuList {
+    .ritualesList {
         grid-template-columns: 1fr;
     }
 }

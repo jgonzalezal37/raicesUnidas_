@@ -1,6 +1,5 @@
 import React, { use, useState, useEffect } from 'react'
 import Logo from '../assets/logo.jpg'
-import { Link } from 'react-router-dom'
 import ReorderIcon from '@mui/icons-material/Reorder';
 import '../styles/Navbar.css'
 const Navbar = () => {
@@ -18,27 +17,44 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [openLinks]);
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+    const handleSmoothScroll = (e) => {
+        e.preventDefault();
+        const targetId = e.currentTarget.getAttribute('href').substring(1); // quita el "#"
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         <div className='navbar'>
             <div className='leftSide' id={openLinks ? "open" : "close"}>
                 <img src={Logo} />
                 <div className={`hiddenLinks ${openLinks ? 'active' : ''}`}>
-                    <button className="closeButton" onClick={toggleNavBar}>×</button>
-                    <Link to="/">Inicio</Link>
-                    <Link to="/">Constelaciones Familiares</Link>
-                    <Link to="/">Acerca de mí</Link>
-                    <Link to="/">Consultas</Link>
-                    <Link to="/">Testimonios</Link>
-                    <Link to="/">Contacto</Link>
+                    <button className="closeButton" onClick={toggleNavBar}></button>
+                    <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
+                    <a href="#rituales" onClick={handleSmoothScroll}>Rituales</a>
+                    <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
+                    <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
+                    <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
+                    <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
+                    <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
+
                 </div>
             </div>
             <div className='rightSide'>
-                <Link to="/">Inicio</Link>
-                <Link to="/">Constelaciones Familiares</Link>
-                <Link to="/">Acerca de mí</Link>
-                <Link to="/">Consultas</Link>
-                <Link to="/">Testimonios</Link>
-                <Link to="/">Contacto</Link>
+                <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
+                <a href="#rituales" onClick={handleSmoothScroll}>Rituales</a>
+                <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
+                <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
+                <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
+                <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
+                <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
                 <button onClick={toggleNavBar}>
                     <ReorderIcon />
                 </button>

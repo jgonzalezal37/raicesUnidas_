@@ -1,8 +1,8 @@
 import React from 'react'
 
-const MenuItem = ({ image, name, price }) => {
+const RitualItem = ({ image, name, price }) => {
     return (
-        <div className='menuItem'>
+        <div className='ritualItem'>
             <div style={{ backgroundImage: `url(${image})` }}></div>
             <h1>{name}</h1>
             <p>{price}</p>
@@ -10,4 +10,4 @@ const MenuItem = ({ image, name, price }) => {
     )
 }
 
-export default MenuItem
+export default RitualItem
