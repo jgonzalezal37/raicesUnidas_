@@ -17,8 +17,8 @@ function App() {
 
             {/* Secciones scrollables */}
             <section id="inicio"><Home /></section>
-            <section id="rituales"><Rituales /></section>
             <section id="informacion"><Informacion /></section>
+            <section id="rituales"><Rituales /></section>
             <section id="constelaciones"><Constelaciones /></section>
             <section id="consultas"><Consultas /></section>
             <section id="testimonios"><Testimonios /></section>
