@@ -1,5 +1,5 @@
 import React, { use, useState, useEffect } from 'react'
-import Logo from '../assets/logo.jpg'
+import Logo from '../assets/LogoWeb.png'
 import ReorderIcon from '@mui/icons-material/Reorder';
 import '../styles/Navbar.css'
 const Navbar = () => {
@@ -17,12 +17,6 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [openLinks]);
-    const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
     const handleSmoothScroll = (e) => {
         e.preventDefault();
         const targetId = e.currentTarget.getAttribute('href').substring(1); // quita el "#"
@@ -34,27 +28,59 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div className='leftSide' id={openLinks ? "open" : "close"}>
-                <img src={Logo} />
+                <a href="#inicio" onClick={handleSmoothScroll} className='logo-link'>
+                    <img src={Logo} alt="Logo Raíces Unidas" />
+                </a>
                 <div className={`hiddenLinks ${openLinks ? 'active' : ''}`}>
                     <button className="closeButton" onClick={toggleNavBar}></button>
-                    <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
-                    <a href="#rituales" onClick={handleSmoothScroll}>Rituales</a>
-                    <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
-                    <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
-                    <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
-                    <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
-                    <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
+                    <div className="nav-item">
+                        <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
+                    </div>
+                    <div className="nav-item">
+                        <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
+                    </div>
+                    <div className="nav-item">
+                        <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
+                    </div>
+                    <div className="nav-item">
+                        <a href="#rituales" onClick={handleSmoothScroll}>Tarot y Rituales</a>
+                    </div>
+                    <div className="nav-item">
+                        <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
+                    </div>
+                    <div className="nav-item">
+                        <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
+                    </div>
+                    <div className="nav-item">
+                        <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
+                    </div>
+
 
                 </div>
             </div>
             <div className='rightSide'>
-                <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
-                <a href="#rituales" onClick={handleSmoothScroll}>Rituales</a>
-                <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
-                <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
-                <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
-                <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
-                <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
+                <div className="nav-item">
+                    <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
+                </div>
+                <div className="nav-item">
+                    <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
+                </div>
+                <div className="nav-item">
+                    <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
+                </div>
+                <div className="nav-item">
+                    <a href="#rituales" onClick={handleSmoothScroll}>Tarot y Rituales</a>
+                </div>
+                <div className="nav-item">
+                    <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
+                </div>
+                <div className="nav-item">
+                    <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
+                </div>
+                <div className="nav-item">
+                    <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
+                </div>
+
                 <button onClick={toggleNavBar}>
                     <ReorderIcon />
                 </button>

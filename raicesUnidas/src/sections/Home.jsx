@@ -1,5 +1,5 @@
 import React from 'react'
-import BannerImage from '../assets/imagenHome.jpg'
+import BannerImage from '../assets/RosanaLanding.png'
 import '../styles/Home.css'
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
             style={{ backgroundImage: `url(${BannerImage})` }}
         >
             <div className='headerContainer'>
-                <h1>RaicesUnidas</h1>
+                <h1>Rosana Luque Menéndez</h1>
                 <p>Encuentra tu poder personal y sana tu alma</p>
 
             </div>

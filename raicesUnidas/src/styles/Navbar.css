@@ -1,30 +1,48 @@
+/* ===== Navbar Principal ===== */
 .navbar {
     width: 100%;
     height: 70px;
-    background-color: #121619;
+    background-color: #453a3a;
     display: flex;
     flex-direction: row;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1001;
-    /* Asegúrate de que esté por encima del resto */
 }
 
+/* ===== Zona Izquierda: Logo ===== */
 .navbar .leftSide {
     flex: 30%;
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 50px;
+    justify-content: flex-start;
+    padding-left: 10px;
 }
 
-.navbar .leftSide img {
+.logo-link {
+    display: inline-block;
+    max-width: 180px;
+    /* Un poco más ancho para no cortar */
+    height: 100%;
+    padding: 5px 10px;
+    /* Espacio interno para que no quede pegado */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow: visible;
+    /* Asegura que no se corte */
+}
+
+.logo-link img {
+    max-height: 60px;
+    /* Limita la altura, manteniendo proporción */
     width: auto;
-    height: 80%;
+    display: block;
     border-radius: 8px;
 }
 
+/* ===== Zona Derecha: Menú ===== */
 .navbar .rightSide {
     flex: 70%;
     height: 100%;
@@ -33,31 +51,59 @@
     justify-content: center;
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 20px;
+/* Elementos del menú */
+.nav-item {
+    margin: 0 10px;
+    padding: 6px 10px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 6px;
 }
 
+.nav-item a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.nav-item:hover a {
+    color: #fff;
+    background: linear-gradient(to top, #e9e5d7, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 -2px 15px #e9e5d7;
+    transform: scale(1.1);
+}
+
+/* Botón hamburguesa */
 .navbar .rightSide button {
     background-color: transparent;
     border: none;
     color: white;
+    font-size: 36px;
     cursor: pointer;
+    display: none;
+    /* por defecto oculto */
+    z-index: 1002;
 }
 
+/* Ícono del botón */
 .navbar .rightSide svg {
-    font-size: 40px;
+    font-size: 36px;
 }
 
+/* Menú lateral oculto */
 .hiddenLinks {
+    opacity: 0.93;
     position: fixed;
     top: 0;
     left: 0;
     width: 80vw;
     max-width: 300px;
     height: 100vh;
-    background-color: #121619;
+    background-color: #453a3a;
     padding-top: 100px;
     padding-left: 20px;
     display: flex;
@@ -68,6 +114,10 @@
     transform: translateX(-100%);
     transition: transform 0.4s ease;
     z-index: 1000;
+}
+
+.hiddenLinks.active {
+    transform: translateX(0);
 }
 
 .hiddenLinks a {
@@ -87,29 +137,7 @@
     cursor: pointer;
 }
 
-.hiddenLinks.active {
-    transform: translateX(0);
-}
-
-.navbar #open {
-    padding-left: 0px;
-}
-
-.navbar #open img {
-    display: none;
-}
-
-.navbar #close img {
-    display: inherit;
-}
-
-
-
-.navbar #open a {
-    width: 70px;
-    margin: 5px;
-}
-
+/* Fondo oscuro al abrir menú */
 .overlay {
     position: fixed;
     top: 0;
@@ -117,42 +145,48 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-    /* negro semi-transparente */
     z-index: 999;
-    /* debajo del menú pero por encima del resto */
     opacity: 0;
     animation: fadeIn 0.4s forwards;
 }
 
-/* Animación suave */
 @keyframes fadeIn {
     to {
         opacity: 1;
     }
 }
 
+/* ===== Responsivo ===== */
 @media only screen and (max-width: 900px) {
     .navbar .rightSide a {
         width: 70px;
     }
 
     .navbar .leftSide {
-        padding-left: 50px;
+        padding-left: 20px;
     }
 }
 
 @media only screen and (max-width: 600px) {
+
+    /* Oculta links y muestra botón */
     .navbar .rightSide a {
         display: none;
     }
 
     .navbar .rightSide {
-        justify-content: flex-end;
-        padding-right: 50px;
+        justify-content: center;
+        padding-right: 0;
     }
 
     .navbar .rightSide button {
-        display: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-link img {
+        height: 45px;
     }
 }
 

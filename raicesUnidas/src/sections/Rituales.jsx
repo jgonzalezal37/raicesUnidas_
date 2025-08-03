@@ -6,7 +6,7 @@ import '../styles/Rituales.css';
 const Rituales = () => {
     return (
         <section id="rituales" className="rituales">
-            <h1 className="ritualesTitle">Rituales y servicios</h1>
+            <h1 className="ritualesTitle">Tarot y Rituales</h1>
             <div className="ritualesList">
                 {RitualesList.map((ritualItem, key) => (
                     <RitualItem
