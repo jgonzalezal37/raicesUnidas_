@@ -1,6 +1,6 @@
 @import './SectionsBase.css';
 
-#informacion {
+#constelaciones {
     background-color: #f4f0e6;
     border-radius: 12px;
     padding: 60px 30px;
@@ -11,16 +11,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.informacion-container {
+.constelaciones-container {
     max-width: 900px;
     margin: 0 auto;
     line-height: 1.7;
     padding: 20px;
-    color: #453a3a;
 }
 
-/* Títulos */
-.informacion-container h1 {
+.constelaciones-container h1 {
     font-size: 2.8rem;
     color: #6b4f4f;
     margin-top: -30px;
@@ -29,28 +27,25 @@
     text-shadow: 1px 1px 2px #bf9378;
 }
 
-.informacion-container h2 {
+.constelaciones-container h2 {
     font-size: 1.8rem;
     color: #7e665a;
     margin-top: 30px;
     margin-bottom: 15px;
 }
 
-/* Párrafos y listas */
-.informacion-container p,
-.informacion-container ul {
+.constelaciones-container p,
+.constelaciones-container ul {
     font-size: 1.1rem;
     margin-bottom: 20px;
-    color: #453a3a;
 }
 
-.informacion-container ul {
+.constelaciones-container ul {
     list-style-type: disc;
     margin-left: 25px;
 }
 
-/* Firma */
-.informacion-container .firma {
+.constelaciones-container .firma {
     font-style: italic;
     text-align: right;
     font-size: 1.1rem;
@@ -58,62 +53,37 @@
     margin-top: 40px;
 }
 
-.informacion-slider {
-    max-width: 300px;
-    margin: 40px auto;
-    height: 400px;
+.constelaciones-slider {
+    max-width: 700px;
+    margin: 30px auto;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.informacion-slider img {
-    width: 300px;
+.constelaciones-slider img {
+    width: 100%;
     height: auto;
     object-fit: cover;
     display: block;
-    border-radius: 12px;
-}
-
-
-/* Gradiente de cierre opcional */
-#informacion::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to bottom, rgba(244, 240, 230, 0), #f4f0e6);
-    pointer-events: none;
-    z-index: -1;
 }
 
 /* Responsive */
 @media only screen and (max-width: 768px) {
-    .informacion-container {
+    .constelaciones-container {
         padding: 10px;
     }
 
-    .informacion-container h1 {
+    .constelaciones-container h1 {
         font-size: 2rem;
     }
 
-    .informacion-container h2 {
+    .constelaciones-container h2 {
         font-size: 1.4rem;
     }
 
-    .informacion-container p,
-    .informacion-container ul {
+    .constelaciones-container p,
+    .constelaciones-container ul {
         font-size: 1rem;
-    }
-
-    .informacion-slider {
-        max-width: 100%;
-        margin: 30px auto;
-    }
-
-    .informacion-slider img {
-        border-radius: 8px;
     }
 }

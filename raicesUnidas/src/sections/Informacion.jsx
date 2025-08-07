@@ -1,7 +1,25 @@
 import React from 'react';
-import '../styles/Informacion.css'; // Asegúrate de tener este archivo CSS o ajusta el estilo en línea
+import '../styles/Informacion.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import sliderImg1 from "../assets/slider1.jpg"
+import sliderImg2 from "../assets/slider2.jpg"
+import sliderImg3 from "../assets/slider3.jpg"
+
 
 const Informacion = () => {
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 400,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2500,
+        arrows: false,
+    };
+
     return (
         <section id="informacion" className="informacion-container">
             <h1>Sobre Raíces Unidas</h1>
@@ -35,7 +53,17 @@ const Informacion = () => {
                 Realizamos sesiones presenciales en espacios naturales, y también ofrecemos servicios online para que puedas
                 conectar desde cualquier lugar del mundo.
             </p>
-
+            <Slider {...sliderSettings} className="informacion-slider">
+                <div>
+                    <img src={sliderImg1} alt="Momento 1" />
+                </div>
+                <div>
+                    <img src={sliderImg2} alt="Momento 2" />
+                </div>
+                <div>
+                    <img src={sliderImg3} alt="Momento 3" />
+                </div>
+            </Slider>
             <p className="firma">✨ Con amor, <strong>Raíces Unidas</strong></p>
         </section>
     );

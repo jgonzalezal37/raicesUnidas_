@@ -1,5 +1,6 @@
 @import './SectionsBase.css';
 
+
 .home {
     width: 100%;
     position: relative;
@@ -46,12 +47,14 @@ Degradado del fondo, por ahora lo quitamos
     font-size: 3.3rem;
     margin-bottom: 15px;
     text-shadow: 2px 2px 6px #bf9378;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .headerContainer p {
     font-size: 1.5rem;
     margin-bottom: 30px;
     text-shadow: 1px 1px 5px #bf9378;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .headerContainer button:hover {

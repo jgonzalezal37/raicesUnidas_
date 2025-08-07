@@ -1,86 +1,97 @@
-import React, { use, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../assets/LogoWeb.png'
 import ReorderIcon from '@mui/icons-material/Reorder';
 import '../styles/Navbar.css'
+
 const Navbar = () => {
     const [openLinks, setOpenLinks] = useState(false)
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const toggleNavBar = () => {
         setOpenLinks(!openLinks)
     }
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 600 && openLinks) {
-                setOpenLinks(false); // cerrar si el menú estaba abierto
+                setOpenLinks(false);
             }
         };
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [openLinks]);
-    const handleSmoothScroll = (e) => {
+
+    const handleLinkClick = (e, href) => {
         e.preventDefault();
-        const targetId = e.currentTarget.getAttribute('href').substring(1); // quita el "#"
-        const element = document.getElementById(targetId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+        if (location.pathname === '/cart' && href.startsWith('/#')) {
+            // Extraemos la sección del hash
+            const section = href.split('#')[1];
+            // Navegamos a home y pasamos la sección en state para hacer scroll luego
+            navigate('/', { state: { scrollTo: section } });
+            setOpenLinks(false);
+        } else if (href.startsWith('#')) {
+            // Scroll smooth en la misma página
+            const section = href.substring(1);
+            const element = document.getElementById(section);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            setOpenLinks(false);
+        } else {
+            // Navegación normal para otras rutas
+            navigate(href);
+            setOpenLinks(false);
         }
     };
+
+    const getLinkHref = (sectionId) => {
+        if (location.pathname === '/cart') {
+            return `/#${sectionId}`;
+        }
+        return `#${sectionId}`;
+    };
+
+    const sections = [
+        { id: 'inicio', label: 'Inicio' },
+        { id: 'informacion', label: 'Acerca de mí' },
+        { id: 'constelaciones', label: 'Constelaciones' },
+        { id: 'rituales', label: 'Tarot y Rituales' },
+        { id: 'consultas', label: 'Consultas' },
+        { id: 'testimonios', label: 'Testimonios' },
+        { id: 'contacto', label: 'Contacto' },
+    ];
+
     return (
         <div className='navbar'>
             <div className='leftSide' id={openLinks ? "open" : "close"}>
-                <a href="#inicio" onClick={handleSmoothScroll} className='logo-link'>
+                <a
+                    href={getLinkHref('inicio')}
+                    onClick={(e) => handleLinkClick(e, getLinkHref('inicio'))}
+                    className='logo-link'
+                >
                     <img src={Logo} alt="Logo Raíces Unidas" />
                 </a>
                 <div className={`hiddenLinks ${openLinks ? 'active' : ''}`}>
                     <button className="closeButton" onClick={toggleNavBar}></button>
-                    <div className="nav-item">
-                        <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
-                    </div>
-                    <div className="nav-item">
-                        <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
-                    </div>
-                    <div className="nav-item">
-                        <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
-                    </div>
-                    <div className="nav-item">
-                        <a href="#rituales" onClick={handleSmoothScroll}>Tarot y Rituales</a>
-                    </div>
-                    <div className="nav-item">
-                        <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
-                    </div>
-                    <div className="nav-item">
-                        <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
-                    </div>
-                    <div className="nav-item">
-                        <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
-                    </div>
-
-
+                    {sections.map(({ id, label }) => (
+                        <div key={id} className="nav-item">
+                            <a href={getLinkHref(id)} onClick={(e) => handleLinkClick(e, getLinkHref(id))}>
+                                {label}
+                            </a>
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className='rightSide'>
-                <div className="nav-item">
-                    <a href="#inicio" onClick={handleSmoothScroll}>Inicio</a>
-                </div>
-                <div className="nav-item">
-                    <a href="#informacion" onClick={handleSmoothScroll}>Acerca de mí</a>
-                </div>
-                <div className="nav-item">
-                    <a href="#constelaciones" onClick={handleSmoothScroll}>Constelaciones</a>
-                </div>
-                <div className="nav-item">
-                    <a href="#rituales" onClick={handleSmoothScroll}>Tarot y Rituales</a>
-                </div>
-                <div className="nav-item">
-                    <a href="#consultas" onClick={handleSmoothScroll}>Consultas</a>
-                </div>
-                <div className="nav-item">
-                    <a href="#testimonios" onClick={handleSmoothScroll}>Testimonios</a>
-                </div>
-                <div className="nav-item">
-                    <a href="#contacto" onClick={handleSmoothScroll}>Contacto</a>
-                </div>
-
+                {sections.map(({ id, label }) => (
+                    <div key={id} className="nav-item">
+                        <a href={getLinkHref(id)} onClick={(e) => handleLinkClick(e, getLinkHref(id))}>
+                            {label}
+                        </a>
+                    </div>
+                ))}
                 <button onClick={toggleNavBar}>
                     <ReorderIcon />
                 </button>
